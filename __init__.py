@@ -407,10 +407,11 @@ class BakeAll(bpy.types.Operator):
 
         filter_objects = None
 
+        rsettings = atlasgroup.uv_rearrange_settings
         if atlasgroup.uv_rearrange_settings.uv_rearrange_mode!="MAT2UV":
             mat2mesh = GetMaterial2Mesh(rsettings,atlasgroup)
             filter_objects = []
-            for mdata in mat2mesh:
+            for mdata in mat2mesh.values():
                 first_elem = next(iter(mdata.obj2matIdx.keys()))
                 filter_objects.append(first_elem)
 
